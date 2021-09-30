@@ -16,6 +16,10 @@ images = soup.find_all('img',{"src":True})
 
 for image in images:
     #alt tag usually contains name of image
-    name = image['alt']
+    name = "TEST"
     link = image['src']
-    print(link)
+    #save image
+    with open(name + '.jpg', 'wb') as f: #wb - bytes
+        #send request to individual links so we can get infor from them, from server
+        im = requests.get(link)
+        f.write(im.content) #content is byte content
